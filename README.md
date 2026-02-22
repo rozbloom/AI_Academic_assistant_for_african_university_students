@@ -33,3 +33,25 @@ here is the high level architecture diagram :
                                 │ Answer Engine  │
                                 └────────────────┘
 ```
+
+Next step would be a deailed RAG pipeline design.
+
+```yaml 
+User uploads PDF
+      ↓
+Text Extraction
+      ↓
+Text Chunking
+      ↓
+Embeddings Creation
+      ↓
+Store in Vector Database
+      ↓
+User asks question
+      ↓
+Similarity Search
+      ↓
+Send context to LLM
+      ↓
+Generate answer
+```
