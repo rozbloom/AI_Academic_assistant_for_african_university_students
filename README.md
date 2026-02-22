@@ -2,6 +2,7 @@
 we students struggle with finding an AI to help explain concepts simply, to generate university standards questions, and summarizing lecture Pdfs. here is your solution then for all of it.  
 
 here is the high level architecture diagram :
+```yaml
                 ┌──────────────────────┐
                 │      Frontend        │
                 │  (Next.js Web App)   │
@@ -31,3 +32,4 @@ here is the high level architecture diagram :
                                 │ LLM (AI Engine)│
                                 │ Answer Engine  │
                                 └────────────────┘
+```
