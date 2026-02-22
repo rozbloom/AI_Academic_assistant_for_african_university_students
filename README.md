@@ -36,22 +36,12 @@ here is the high level architecture diagram :
 
 Next step would be a deailed RAG pipeline design.
 
-```yaml 
-User uploads PDF
-      ↓
-Text Extraction
-      ↓
-Text Chunking
-      ↓
-Embeddings Creation
-      ↓
-Store in Vector Database
-      ↓
-User asks question
-      ↓
-Similarity Search
-      ↓
-Send context to LLM
-      ↓
-Generate answer
-```
+```mermaid
+flowchart TD
+A[Upload PDF] --> B[Extract Text]
+B --> C[Chunk Text]
+C --> D[Create Embeddings]
+D --> E[Store in Vector DB]
+E --> F[User Question]
+F --> G[Similarity Search]
+G --> H[LLM Answer]
