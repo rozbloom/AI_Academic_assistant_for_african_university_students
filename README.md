@@ -2,56 +2,27 @@
 we students struggle with finding an AI to help explain concepts simply, to generate university standards questions, and summarizing lecture Pdfs. here is your solution then for all of it.  
 
 here is the high level architecture diagram :
-```yaml
-                ┌──────────────────────┐
-                │      Frontend        │
-                │  (Next.js Web App)   │
-                └─────────┬────────────┘
-                          │ HTTPS API
-                          ▼
-                ┌──────────────────────┐
-                │      Backend API     │
-                │       FastAPI        │
-                └─────────┬────────────┘
-                          │
-        ┌─────────────────┼─────────────────┐
-        ▼                 ▼                 ▼
-┌───────────────┐ ┌───────────────┐ ┌────────────────┐
-│ PostgreSQL    │ │ File Storage  │ │ Vector Database│
-│ User data     │ │ PDFs          │ │ FAISS/Chroma   │
-└───────────────┘ └───────────────┘ └────────────────┘
-                                          │
-                                          ▼
-                                ┌────────────────┐
-                                │ Embedding Model│
-                                │ sentence-BERT  │
-                                └────────────────┘
-                                          │
-                                          ▼
-                                ┌────────────────┐
-                                │ LLM (AI Engine)│
-                                │ Answer Engine  │
-                                └────────────────┘
+```mermaid
+flowchart TD
+    A[Frontend<br>Next.js web app] -->|HTTPS API| B[Backend<br>FastAPI]
+    B --> C[(PostgreSQL <br> userdata)]
+    B --> D[(File Storage<br>PDFs)]
+    B --> E[(Vector DB<br>FAISS/Chroma)]
+    E --> F[Embedding<br>sentence-BERT]
+    F --> G[LLM / Answer Engine]
+
+    linkStyle default stroke:#555,stroke-width:1.5px
 ```
 
 Next step would be a deailed RAG pipeline design.
 
-```yaml 
-User uploads PDF
-      ↓
-Text Extraction
-      ↓
-Text Chunking
-      ↓
-Embeddings Creation
-      ↓
-Store in Vector Database
-      ↓
-User asks question
-      ↓
-Similarity Search
-      ↓
-Send context to LLM
-      ↓
-Generate answer
+```mermaid
+flowchart TD
+A[Upload PDF] --> B[Extract Text]
+B --> C[Chunk Text]
+C --> D[Create Embeddings]
+D --> E[Store in Vector DB]
+E --> F[User Question]
+F --> G[Similarity Search]
+G --> H[LLM Answer]
 ```
