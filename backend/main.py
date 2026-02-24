@@ -1,5 +1,5 @@
-from rag.loader import load_documents
-from rag.chuncker import chunk_text
+from rag.loader import pdf_loader
+from rag.chuncker import text_chunk
 from rag.embeddings import generate_embeddings
 from rag.vector_store import vector_store
 
@@ -8,10 +8,10 @@ def run_pipeline():
     file_path = "grok_report (1).pdf"
 
     print("Loading documents...")
-    documents = load_documents(file_path)
+    documents = pdf_loader(file_path)
 
     print("Chunking text...")
-    chunks = chunk_text(documents)
+    chunks = text_chunk(documents)
 
     print("Generating embeddings...")
     embeddings = generate_embeddings(chunks)

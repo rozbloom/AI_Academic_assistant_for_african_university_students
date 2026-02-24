@@ -1,8 +1,8 @@
-from pypdf import pdfReader
+from pypdf import PdfReader
 
 
 def pdf_loader(file_path: str) -> str:
-    reader = pdfReader(file_path)
+    reader = PdfReader(file_path)
     text = ""
 
     for page in reader.pages:
