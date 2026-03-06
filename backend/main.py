@@ -5,13 +5,16 @@ from rag.vector_store import vector_store
 
 
 def run_pipeline():
-    file_path = "grok_report (1).pdf"
+    file_path = "sample.pdf"
 
     print("Loading documents...")
     documents = pdf_loader(file_path)
 
+    print("TEXT LENGTH:", len(file_path))
+
     print("Chunking text...")
     chunks = text_chunk(documents)
+    print("NUMBER OF CHUNKS:", len(chunks))
 
     print("Generating embeddings...")
     embeddings = generate_embeddings(chunks)
