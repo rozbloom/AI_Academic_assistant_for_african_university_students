@@ -1,4 +1,4 @@
-from rag.loader import pdf_loader
+from rag.loader import load_pdf
 from rag.chuncker import text_chunk
 from rag.embeddings import generate_embeddings
 from rag.vector_store import vector_store
@@ -21,9 +21,9 @@ def run_pipeline():
         exit()
 
     print("Loading documents...")
-    documents = pdf_loader(file_path)
+    documents = load_pdf(file_path)
 
-    print("TEXT LENGTH:", len(file_path))
+    print("TEXT LENGTH:", len(documents))
 
     print("Chunking text...")
     chunks = text_chunk(documents)
